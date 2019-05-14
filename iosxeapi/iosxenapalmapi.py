@@ -15,14 +15,14 @@ class iosxenapalmapi(object):
 
     def _execute_call(self, driver, hostname, data=None):
         try:
-            ip_address = '{0}:{1}:{2}'(self.driver, self.hostname, self.port)
+            device_call = '{0}:{1}'(self.driver, self.hostname, self.port)
         except:
             print ("This is an error message!")
 
 
     def get_device(self):
         driver = napalm.get_network_driver('ios')
-        device = self._execute_call('driver', 'hostname')
+        device_call = self._execute_call('driver', 'hostname')
         print('Opening ...')
         device.open()
         device.get_facts()

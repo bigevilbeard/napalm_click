@@ -1,30 +1,43 @@
-import json
 import napalm
-
+import click
+import json
 
 class iosxenapalmapi(object):
-    def __init__(self, driver=None, hostname=None, username=None, password=None, port=22):
-        self.driver = driver
-        self.hostname = hostname
-        self.username = username
-        self.password = password
-        self.port = port
-
-    def __repr__(self):
-        return '%s(%r)' % (self.__class__.__name__, self.hostname)
-
-    def _execute_call(self, driver, hostname, data=None):
-        try:
-            device_call = '{0}:{1}'(self.driver, self.hostname, self.port)
-        except:
-            print ("This is an error message!")
-
-
-    def get_device(self):
+    def __init__(self, hostname=None, username=None, password=None, optional_args=None):
         driver = napalm.get_network_driver('ios')
-        device_call = self._execute_call('driver', 'hostname')
-        print('Opening ...')
-        device.open()
-        device.get_facts()
-        print (get_facts())
-        device.close()
+        self.connection = driver(hostname=hostname, username=username, password=password, optional_args={'port':8181})
+
+
+    def connect(self):
+        self.connection.open()
+
+    def disconnect(self):
+        self.connection.close()
+
+
+    def get_facts(self):
+        """Retrieve and return network devices informatiom.
+
+            ./iosxenapalmapi.py get_facts
+        """
+        click.secho("Retrieving Information")
+        self.connect()
+        facts = self.connection.get_facts()
+        self.disconnect()
+        return facts
+
+    def get_interfaces(self):
+        """Retrieve and return network devices informatiom.
+            ./iosxenapalmapi.py get_facts
+        """
+        click.secho("Retrieving Information")
+        self.connect()
+        facts = self.connection.get_interfaces()
+        self.disconnect()
+        return facts
+
+
+device = iosxenapalmapi("ios-xe-mgmt.cisco.com", "root", "D_Vay!_10&")
+# print(device.get_facts())
+print(json.dumps(device.get_facts(), sort_keys=True, indent=4))
+print(json.dumps(device.get_interfaces(), sort_keys=True, indent=4))

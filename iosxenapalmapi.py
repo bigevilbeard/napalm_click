@@ -15,16 +15,22 @@ class iosxenapalmapi(object):
         self.connection.close()
 
 
-    # def get_facts(self):
-    #     """Retrieve and return network devices informatiom.
-    #
-    #         ./iosxenapalmapi.py get_facts
-    #     """
-    #     click.secho("Retrieving Information")
-    #     self.connect()
-    #     facts = self.connection.get_facts()
-    #     self.disconnect()
-    #     return facts
+    @click.group()
+    def cli(self):
+        pass
+
+
+    @click.command()
+    def get_facts(self):
+        """Retrieve and return network devices informatiom.
+
+            ./iosxenapalmapi.py get_facts
+        """
+        click.secho("Retrieving Information")
+        self.connect()
+        facts = self.connection.get_facts()
+        self.disconnect()
+        return facts
 
     def get_interfaces(self):
         """Retrieve and return network devices informatiom.
@@ -36,8 +42,13 @@ class iosxenapalmapi(object):
         self.disconnect()
         return facts
 
+    cli.add_command(get_facts)
+
+    if __name__ == "__main__":
+        cli(self)
+
 
 device = iosxenapalmapi("ios-xe-mgmt.cisco.com", "root", "D_Vay!_10&")
 # print(device.get_facts())
-# print(json.dumps(device.get_facts(), sort_keys=True, indent=4))
+print(json.dumps(device.get_facts(), sort_keys=True, indent=4))
 print(json.dumps(device.get_interfaces(), sort_keys=True, indent=4))

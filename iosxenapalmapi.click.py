@@ -56,6 +56,7 @@ class iosxenapalmapi(object):
         if choice == 'y':
             print('Committing ...')
             self.connection.commit_config()
+            self.disconnect()
 
         else:
             print('Discarding ...')
@@ -75,8 +76,9 @@ class iosxenapalmapi(object):
         if choice == 'y':
             print('Committing ...')
             self.connection.commit_config()
+            self.disconnect()
 
-        elif choice == 'N':
+        else:
             print('Discarding ...')
             self.connection.discard_config()
             self.disconnect()
@@ -85,8 +87,9 @@ class iosxenapalmapi(object):
         if choice == 'y':
             print('Reverting ...')
             self.connection.rollback()
+            self.disconnect()
 
-        if choice == 'N':
+        else:
             print('Discarding ...')
             self.connection.discard_config()
             self.disconnect()

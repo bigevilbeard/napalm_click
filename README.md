@@ -1,20 +1,18 @@
-# Network Automation with Napalm and Click python libraries
+# Network Automation with Napalm and Click Python libraries
 
-Network automation and devices management has many paths and options... With so many APIs being available your network can quickly be as complex to manage with automation as it was with manual configurations. Evaluating the offerings of API vendors often goes past the technology itself. But, NAPALM (Network Automation and Programmability Abstraction Layer with Multivendor support) is helping to change that, a unified API makes it possible to share code between network devices and vendors.
+Network automation and devices management has many paths and options... With so many APIs being available your network can quickly be as complex to manage with automation as it was with manual configurations. Evaluating the offerings of API vendors often goes past the technology itself. But, [NAPALM](https://napalm.readthedocs.io/en/latest/index.html) (Network Automation and Programmability Abstraction Layer with Multivendor support) is helping to change that, a unified API makes it possible to share code between network devices and vendors.
 
+NAPALM is a Python library that implements a set of functions to interact with different network device Operating Systems using a unified API.
 
-[NAPALM](https://napalm.readthedocs.io/en/latest/index.html) (Network Automation and Programmability Abstraction Layer with Multivendor support) is a Python library that implements a set of functions to interact with different network device Operating Systems using a unified API.
-
-Click is a Python package for creating beautiful command line interfaces in a composable way with as little code as necessary.
-[CLICK](https://click.palletsprojects.com/en/7.x/).
+[Click](https://click.palletsprojects.com/en/7.x/) is a Python package for creating beautiful command line interfaces in a composable way with as little code as necessary.
 
 ## DevNet Sandbox
-All code has been written/tested on the Cisco DevNet IOS XR always on Sandbox https://t.co/V6rXj3plwF
-Please see the sandbox pages for credentials and reservations use.
+All code has been written/tested on the [Cisco DevNet IOS XR always on Sandbox](https://t.co/V6rXj3plwF).
+Please see the sandbox pages for credentials and reservations.
 
 ## Code
 
-All of the code and examples for this are located in this directory. Clone and access it with the following commands:
+All of the code you need is located in this repo. Clone the repo and access it with the following commands:
 
 ```
 git clone https://github.com/bigevilbeard/napalm_click
@@ -22,7 +20,7 @@ cd napalm_click
 ```
 
 ## Python Environment Setup
-It is recommended that this demo be completed using Python 3.6.It is highly recommended to leverage Python Virtual Environments for completing exercises in this course.
+It is recommended that this code be used with Python 3.6. It is highly recommended to leverage Python Virtual Environments (venv).
 
 Follow these steps to create and activate a venv.
 ```
@@ -38,7 +36,7 @@ pip install -r requirements.txt
 
 ## Running the code examples
 
-NAPALM supports several methods to connect to the devices, to manipulate configurations or to retrieve data.Configurations can be replaced entirely or merged into the existing device config. You can load configuration either from a string or from a file. If for some reason you committed the changes and you want to rollback, this can also be done (please check Naplam doc for support of merge, replace and rollback as some platforms differ)
+NAPALM supports several methods to connect to the devices, to manipulate configurations or to retrieve data. Configurations can be replaced entirely or merged into the existing device config. You can load configuration either from a string or from a file. If for some reason you committed the changes and you want to rollback, this can also be done (please check NAPALM documention for support of merge, replace and rollback as some platforms differ)
 
 
 This code uses Object-Oriented Programming (OOP). This is a programming paradigm where different components of a computer program are modelled after real-world objects. An object is anything that has some characteristics and can perform a function. All args used in the running of the code are handled using Click.
@@ -52,7 +50,7 @@ cli.add_command(rollback)
 
 ```
 
-In this code, we can show the router version and interface information (shown in `json` format).
+With this code, we show the router version and interface information (shown in `json` format).
 
 
 

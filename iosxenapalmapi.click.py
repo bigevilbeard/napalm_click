@@ -36,8 +36,14 @@ class iosxenapalmapi(object):
     def merge_loopbacks(self):
         self.connect()
         facts = self.connection.load_merge_candidate(filename='new_loopbacks.cfg')
-        print('\nDiff:')
-        print(self.connection.compare_config())
+        diff = self.connection.compare_config()
+        print(diff)
+        if len(diff) < 1:
+            print('\nNo Changes Required Closing...')
+            self.connection.discard_config()
+            self.disconnect()
+            exit()
+
         try:
             choice = input("\nWould you like to commit these changes? [yN]: ")
         except NameError:
@@ -54,8 +60,14 @@ class iosxenapalmapi(object):
     def replace_loopbacks(self):
         self.connect()
         facts = self.connection.load_replace_candidate(filename='replace.conf')
-        print('\nDiff:')
-        print(self.connection.compare_config())
+        diff = self.connection.compare_config()
+        print(diff)
+        if len(diff) < 1:
+            print('\nNo Changes Required Closing...')
+            self.connection.discard_config()
+            self.disconnect()
+            exit()
+
         try:
             choice = input("\nWould you like to commit these changes? [yN]: ")
         except NameError:
@@ -74,8 +86,14 @@ class iosxenapalmapi(object):
     def rollback_loopbacks(self):
         self.connect()
         facts = self.connection.load_merge_candidate(filename='new_loopbacks.cfg')
-        print('\nDiff:')
-        print(self.connection.compare_config())
+        diff = self.connection.compare_config()
+        print(diff)
+        if len(diff) < 1:
+            print('\nNo Changes Required Closing...')
+            self.connection.discard_config()
+            self.disconnect()
+            exit()
+            
         try:
             choice = input("\nWould you like to commit these changes? [yN]: ")
         except NameError:

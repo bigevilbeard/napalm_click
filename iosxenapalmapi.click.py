@@ -2,6 +2,7 @@ import napalm
 import click
 import json
 
+
 class iosxenapalmapi(object):
     def __init__(self, hostname=None, username=None, password=None, optional_args=None):
         driver = napalm.get_network_driver('ios-xr')
@@ -23,6 +24,12 @@ class iosxenapalmapi(object):
     def get_interfaces(self):
         self.connect()
         facts = self.connection.get_interfaces()
+        self.disconnect()
+        return facts
+
+    def get_interfaces_ip(self):
+        self.connect()
+        facts = self.connection.get_interfaces_ip()
         self.disconnect()
         return facts
 
@@ -76,12 +83,12 @@ class iosxenapalmapi(object):
         if choice == 'y':
             print('Committing ...')
             self.connection.commit_config()
-            self.disconnect()
 
         else:
             print('Discarding ...')
             self.connection.discard_config()
             self.disconnect()
+            exit()
 
         rollback = input("\nWould you like to rollback these changes? [yN]: ")
         if choice == 'y':
@@ -114,6 +121,12 @@ def interfaces():
     click.echo(interface)
 
 @click.command()
+def interfaces_ip():
+    click.secho("Retrieving Information")
+    interface_ip = json.dumps(device.get_interfaces_ip(), sort_keys=True, indent=4)
+    click.echo(interface_ip)
+
+@click.command()
 def merge():
     click.secho("Merge Loopback Interfaces")
     merge_loopbacks = json.dumps(device.merge_loopbacks(), sort_keys=True, indent=4)
@@ -133,6 +146,7 @@ def rollback():
 
 cli.add_command(facts)
 cli.add_command(interfaces)
+cli.add_command(interfaces_ip)
 cli.add_command(merge)
 cli.add_command(replace)
 cli.add_command(rollback)

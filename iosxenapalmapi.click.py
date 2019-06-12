@@ -122,7 +122,7 @@ class iosxenapalmapi(object):
             self.connection.discard_config()
             self.disconnect()
 
-
+# hostname, username, password
 device = iosxenapalmapi("127.0.0.1", "vagrant", "vagrant")
 
 @click.group()

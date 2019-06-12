@@ -44,10 +44,28 @@ This code uses Object-Oriented Programming (OOP). This is a programming paradigm
 ```
 cli.add_command(facts)
 cli.add_command(interfaces)
+cli.add_command(interfaces_ip)
 cli.add_command(merge)
 cli.add_command(replace)
 cli.add_command(rollback)
 
+```
+**Note:** Before using the code, update the IP address/hostname and port information.
+
+```
+(venv) STUACLAR-M-R6EU:napalm_click stuaclar$ python iosxenapalmapi.click.py --help
+Usage: iosxenapalmapi.click.py [OPTIONS] COMMAND [ARGS]...
+
+Options:
+  --help  Show this message and exit.
+
+Commands:
+  facts
+  interfaces
+  interfaces_ip
+  merge
+  replace
+  rollback
 ```
 
 With this code, we show the router version and interface information (shown in `json` format).

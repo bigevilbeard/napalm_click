@@ -21,6 +21,12 @@ class iosxenapalmapi(object):
         self.disconnect()
         return facts
 
+    def get_validation(self):
+        self.connect()
+        facts = self.connection.compliance_report("validate.yml")
+        self.disconnect()
+        return facts
+
     def get_interfaces(self):
         self.connect()
         facts = self.connection.get_interfaces()
@@ -87,7 +93,7 @@ class iosxenapalmapi(object):
 
     def rollback_loopbacks(self):
         self.connect()
-        facts = self.connection.load_merge_candidate(filename='new_loopbacks.cfg')
+        facts = self.connection.load_merge_candidate(filename='rollback_loopbacks.cfg')
         print('\nDiff:')
         diff = self.connection.compare_config()
         print(diff)
@@ -124,6 +130,7 @@ class iosxenapalmapi(object):
 
 # hostname, username, password
 device = iosxenapalmapi("127.0.0.1", "vagrant", "vagrant")
+# device = iosxenapalmapi("sbx-iosxr-mgmt.cisco.com", "admin", "C1sco12345")
 
 @click.group()
 def cli():
@@ -133,6 +140,12 @@ def cli():
 def facts():
     click.secho("Retrieving Information")
     fact = json.dumps(device.get_facts(), sort_keys=True, indent=4)
+    click.echo(fact)
+
+@click.command()
+def validation():
+    click.secho("Retrieving Information")
+    fact = json.dumps(device.get_validation(), sort_keys=True, indent=4)
     click.echo(fact)
 
 @click.command()
@@ -166,6 +179,7 @@ def rollback():
     click.echo(rollback)
 
 cli.add_command(facts)
+cli.add_command(validation)
 cli.add_command(interfaces)
 cli.add_command(interfaces_ip)
 cli.add_command(merge)

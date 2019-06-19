@@ -1,0 +1,15 @@
+---
+- get_facts:
+    os_version: 6.1.2
+    vendor: Cisco
+
+- get_interfaces:
+     MgmtEth0/RP0/CPU0/0:
+        is_up
+
+- get_interfaces_ip:
+    MgmtEth0/RP0/CPU0/0:
+        ipv4:
+            10.0.2.15:
+                prefix_length: 24
+            _mode: strict

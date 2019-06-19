@@ -66,6 +66,7 @@ Commands:
   merge
   replace
   rollback
+  validation
 ```
 
 With this code, we show the router version and interface information (shown in `json` format).

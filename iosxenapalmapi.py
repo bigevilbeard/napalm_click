@@ -39,7 +39,7 @@ class iosxenapalmapi(object):
 # devices
 # hostname, username, password
 # This example uses the always on devnet sandbox's ios xe, nx-os
-# device = iosxenapalmapi("sbx-nxos-mgmt.cisco.com", "admin", "Admin_1234!")
+device = iosxenapalmapi("sbx-nxos-mgmt.cisco.com", "admin", "Admin_1234!")
 # device = iosxenapalmapi("ios-xe-mgmt.cisco.com", "root", "D_Vay!_10&")
 # device = iosxenapalmapi("sbx-iosxr-mgmt.cisco.com", "admin", "C1sco12345")
 # device = iosxenapalmapi("ios-xe-mgmt-latest.cisco.com","developer","C1sco12345")

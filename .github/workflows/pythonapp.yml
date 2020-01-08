@@ -28,3 +28,8 @@ jobs:
 #       run: |
 #         pip install pytest
 #         pytest
+      - name: Webhook
+      uses: bigevilbeard/webhook-action@master
+      env:
+        WEBHOOK_URL: https://botworkflows-trigger.webex.com/webhook/tgb1025aacf5923898fc69dd/1578485920622
+        data: "Hello from github actions!"

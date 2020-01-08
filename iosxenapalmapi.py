@@ -3,9 +3,9 @@ import json
 
 class iosxenapalmapi(object):
     def __init__(self, hostname=None, username=None, password=None, optional_args=None):
-        driver = napalm.get_network_driver('ios')
+        # driver = napalm.get_network_driver('ios')
         # driver = napalm.get_network_driver('nxos_ssh')
-        # driver = napalm.get_network_driver('ios-xr')
+        driver = napalm.get_network_driver('ios-xr')
         self.connection = driver(hostname=hostname, username=username, password=password, optional_args={'port':8181})
 
 
@@ -39,9 +39,9 @@ class iosxenapalmapi(object):
 # devices
 # hostname, username, password
 # This example uses the always on devnet sandbox's ios xe, nx-os
-device = iosxenapalmapi("sbx-nxos-mgmt.cisco.com", "admin", "Admin_1234!")
+# device = iosxenapalmapi("sbx-nxos-mgmt.cisco.com", "admin", "Admin_1234!")
 # device = iosxenapalmapi("ios-xe-mgmt.cisco.com", "root", "D_Vay!_10&")
-# device = iosxenapalmapi("sbx-iosxr-mgmt.cisco.com", "admin", "C1sco12345")
+device = iosxenapalmapi("sbx-iosxr-mgmt.cisco.com", "admin", "C1sco12345")
 # device = iosxenapalmapi("ios-xe-mgmt-latest.cisco.com","developer","C1sco12345")
 
 

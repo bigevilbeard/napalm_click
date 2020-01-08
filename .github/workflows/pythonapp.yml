@@ -25,10 +25,17 @@ jobs:
         # exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide
         flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
     - name: Temporary Hacky Webhook Success
+      if: success()
       env: # Set the github secret as an input
         teams_webhook_url: ${{ secrets.TEAMS_WEBHOOK_URL }}
       run: |
         curl -X POST -H "Content-Type: application/json" -d "{\"text\" : \"Github Action CI run succeeded. Workflow: ${GITHUB_WORKFLOW} Action ID: ${GITHUB_ACTION} Started By: ${GITHUB_ACTOR} SHA: ${GITHUB_SHA}\"}" ${teams_webhook_url}
+    - name: Temporary Hacky Webhook Failure
+      if: failure()
+      env: # Set the github secret as an input
+        teams_webhook_url: ${{ secrets.TEAMS_WEBHOOK_URL }}
+      run: |
+        curl -X POST -H "Content-Type: application/json" -d "{\"text\" : \"Github Action CI run FAILED. Workflow: ${GITHUB_WORKFLOW} Action ID: ${GITHUB_ACTION} Started By: ${GITHUB_ACTOR} SHA: ${GITHUB_SHA}\"}" ${teams_webhook_url}
 #     - name: Test with pytest
 #       run: |
 #         pip install pytest

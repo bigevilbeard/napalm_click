@@ -29,7 +29,7 @@ jobs:
       env: # Set the github secret as an input
         teams_webhook_url: ${{ secrets.TEAMS_WEBHOOK_URL }}
       run: |
-        curl -X POST -H "Content-Type: application/json" -d "{\"text\" : \"Github Action CI run succeeded. Workflow: ${GITHUB_WORKFLOW} Action ID: ${GITHUB_ACTION} Started By: ${GITHUB_ACTOR} SHA: ${GITHUB_SHA}\"}" ${teams_webhook_url}
+        curl -X POST -H "Content-Type: application/json" -d "{\"text\" : \"Github Action CI run succeeded. Workflow: ${GITHUB_WORKFLOW} Action ID: ${GITHUB_ACTION} Started By: ${GITHUB_ACTOR} REPOSITORY: ${GITHUB_REPOSITORY} SHA: ${GITHUB_SHA}\"}" ${teams_webhook_url}
     - name: Temporary Hacky Webhook Failure
       if: failure()
       env: # Set the github secret as an input

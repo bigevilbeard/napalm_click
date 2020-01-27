@@ -5,7 +5,7 @@ class iosxenapalmapi(object):
     def __init__(self, hostname=None, username=None, password=None, optional_args=None):
         # driver = napalm.get_network_driver('ios')
         # driver = napalm.get_network_driver('nxos_ssh')
-        # driver = napalm.get_network_driver('ios-xr')
+        driver = napalm.get_network_driver('ios-xr')
         self.connection = driver(hostname=hostname, username=username, password=password, optional_args={'port':8181})
 
 

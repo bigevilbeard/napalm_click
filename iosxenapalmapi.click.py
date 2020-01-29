@@ -129,8 +129,8 @@ class iosxenapalmapi(object):
             self.disconnect()
 
 # hostname, username, password
-device = iosxenapalmapi("127.0.0.1", "vagrant", "vagrant")
-# device = iosxenapalmapi("sbx-iosxr-mgmt.cisco.com", "admin", "C1sco12345")
+# device = iosxenapalmapi("127.0.0.1", "vagrant", "vagrant")
+device = iosxenapalmapi("sbx-iosxr-mgmt.cisco.com", "admin", "C1sco12345")
 
 @click.group()
 def cli():

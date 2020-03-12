@@ -2,7 +2,6 @@ import napalm
 import click
 import json
 
-
 class iosxenapalmapi(object):
     def __init__(self, hostname=None, username=None, password=None, optional_args=None):
         driver = napalm.get_network_driver('ios-xr')

@@ -36,10 +36,10 @@ pip install -r requirements.txt
 
 ## Running the code examples
 
-NAPALM supports several methods to connect to the devices, to manipulate configurations or to retrieve data. Configurations can be replaced entirely or merged into the existing device config. You can load configuration either from a string or from a file. If for some reason you committed the changes and you want to rollback, this can also be done (please check NAPALM documention for support of merge, replace and rollback as some platforms differ)
+NAPALM supports several methods to connect to the devices, to manipulate configurations or to retrieve data. Configurations can be replaced entirely or merged into the existing device config. You can load configuration either from a string or from a file. If for some reason you committed the changes and you want to rollback, this can also be done (please check NAPALM documentation for support of merge, replace and rollback as some platforms differ)
 
 
-This code uses Object-Oriented Programming (OOP). This is a programming paradigm where different components of a computer program are modelled after real-world objects. An object is anything that has some characteristics and can perform a function. All args used in the running of the code are handled using Click.
+This code uses Object-Oriented Programming (OOP). This is a programming paradigm where different components of a computer program are modeled after real-world objects. An object is anything that has some characteristics and can perform a function. All args used in the running of the code are handled using [Click](https://click.palletsprojects.com/en/7.x/).
 
 ```
 cli.add_command(facts)
